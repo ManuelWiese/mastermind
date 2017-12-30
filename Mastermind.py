@@ -1,5 +1,6 @@
 import random
 import itertools
+import statistics
 
 
 class Mastermind:
@@ -96,8 +97,10 @@ class Solver:
 
         assert isinstance(score, tuple)
 
-        self.possibleSolutions = [solution for solution in self.possibleSolutions
-                                  if score == self.mastermind.compareCodes(attempt, solution)]
+        self.possibleSolutions = [
+            solution for solution in self.possibleSolutions
+            if score == self.mastermind.compareCodes(attempt, solution)
+        ]
 
     def solve(self):
         while not self.mastermind.isFinished():
@@ -125,7 +128,10 @@ class Statistics:
             self.attempts.append(mastermind.getAttempts())
 
     def getMeanAttempts(self):
-        return sum(self.attempts) / len(self.attempts)
+        return statistics.mean(self.attempts)
+
+    def getStdev(self):
+        return statistics.stdev(self.attempts)
 
     def getMinAttempts(self):
         return min(self.attempts)
@@ -135,8 +141,9 @@ class Statistics:
 
 
 if __name__ == "__main__":
-    statistics = Statistics(8, 5, 1000)
+    stats = Statistics(6, 4, 10000)
 
-    print(statistics.getMeanAttempts(),
-          statistics.getMinAttempts(),
-          statistics.getMaxAttempts())
+    print("mean: {}\n".format(stats.getMeanAttempts())
+          + "stdev: {}\n".format(stats.getStdev())
+          + "min: {}\n".format(stats.getMinAttempts())
+          + "max: {}".format(stats.getMaxAttempts()))
