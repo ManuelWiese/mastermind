@@ -2,6 +2,7 @@ class ColorCode:
     def __init__(self, code, colors):
         self.code = code
         self.len = len(code)
+        self.range = range(self.len)
         self.set = set(code)
         self.count = {color: self.code.count(color) for color in colors}
 
@@ -34,7 +35,7 @@ class ColorCode:
                 colorMatches += count2
 
         matches = 0
-        for i in range(code1.len):
+        for i in code1.range:
             if code1.code[i] == code2.code[i]:
                 matches += 1
 

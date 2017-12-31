@@ -36,7 +36,7 @@ class Statistics:
 
 
 if __name__ == "__main__":
-    stats = Statistics(6, 5, 100)
+    stats = Statistics(6, 4, 1000)
 
     print("mean: {}\n".format(stats.getMeanAttempts())
           + "stdev: {}\n".format(stats.getStdev())
