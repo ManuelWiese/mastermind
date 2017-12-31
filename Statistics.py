@@ -2,6 +2,7 @@ from Solver import Solver
 from Mastermind import Mastermind
 
 import statistics
+from math import sqrt
 
 
 class Statistics:
@@ -15,6 +16,7 @@ class Statistics:
         assert isinstance(runs, int)
         assert runs > 0
 
+        self.runs = runs
         self.attempts = []
 
         for i in range(runs):
@@ -27,6 +29,9 @@ class Statistics:
 
     def getStdev(self):
         return statistics.stdev(self.attempts)
+
+    def getStdError(self):
+        return self.getStdev() / sqrt(self.runs)
 
     def getMinAttempts(self):
         return min(self.attempts)
