@@ -6,3 +6,4 @@ After every guess, the algorithm checks all possible solutions and removes the i
 
 # Result
 Pretty anticlimactic, the difficulty increases in a linear fashion.
+![Image of Yaktocat](https://github.com/ManuelWiese/mastermind/blob/master/images/Result_Experiment_1.png)
